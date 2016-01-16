@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+# wrapper to make rpm --sign be non-interactive
+set password ""
+set file [lindex $argv 0]
+spawn rpm --addsign $file
+expect "Enter pass phrase:"
+send -- "$password\r"
+expect eof
